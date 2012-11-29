@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+<html>
+    <head>
+        <title>Stock Get Popup</title>
+        <link href="css/popup.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div id="information"></div>
+        <button type="button" id="all">Get All</button>
+        <button type="button" id="single">Get This Page</button>
+        <div><input type="checkbox" id="save_to_db"/> Save to Database<img src="images/question_small_white.png" alt="Q" title="Save to Database would be slow, but data would not disappear. On the contrary, save to memory would be fast, but data would be disappear if close or refresh page."/></div>
+        <hr />
+        <div>Data count: <span id="retrieve_count"><img src="images/ajax-loader.gif" alt="0"/></span>
+            <button type="button" id="refresh">Refresh</button>
+            <button type="button" id="clear">Clear</button>
+        </div>
+        <button type="button" id="save">Save</button><a id="filelink"></a>
+        <script src="js/popup.js"></script>
+    </body>
+</html>

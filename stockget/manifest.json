@@ -1,0 +1,19 @@
+{
+    "name": "StockGet",
+    "version": "1.1",
+    "manifest_version": 2,
+    "description": "Used to know.",
+    "page_action": {
+        "default_icon": "images/currency_dollar_green.png",
+        "default_popup": "popup.html",
+        "default_title": "Stock Get"
+    },
+    "permissions": [
+        "tabs",
+        "*://*.krx.co.kr/*",
+        "storage"
+    ],
+    "background": {
+        "scripts": ["js/bg.js"]
+    }
+}
