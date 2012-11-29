@@ -117,13 +117,14 @@
 
             chrome.extension.sendMessage({
                 type: "writefile",
-                filename: "stock" + Math.floor((Math.random()*1000) + 1).toString() +".csv",
+                filename: "stock" + Math.floor((Math.random()*1000) + 1).toString() + ".csv",
                 filecontent: datastr
             }, function(url) {
                 var a = document.createElement("a"),
                     evt = document.createEvent("MouseEvents");
                 a.href = url.toString();
-                a.type = "text/csv";
+                // a.type = "text/csv";
+                a.type = "application/octet-stream";
                 a.target = "_blank";
                 evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
                 a.dispatchEvent(evt);

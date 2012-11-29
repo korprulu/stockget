@@ -1,6 +1,6 @@
 {
     "name": "StockGet",
-    "version": "1.1",
+    "version": "1.2",
     "manifest_version": 2,
     "description": "Used to know.",
     "page_action": {
@@ -10,8 +10,10 @@
     },
     "permissions": [
         "tabs",
-        "*://*.krx.co.kr/*",
-        "storage"
+        "storage",
+        "webRequest",
+        "webRequestBlocking",
+        "*://*.krx.co.kr/*"
     ],
     "background": {
         "scripts": ["js/bg.js"]

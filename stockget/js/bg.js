@@ -196,3 +196,25 @@ chrome.extension.onConnect.addListener(function(port) {
         }
     });
 });
+
+var onBeforeRequestCallback = function() {
+        return {cancel: true};
+    },
+    onBeforeRequestCallback2 = function(details) {
+        var url = details.url;
+        return {cancel: /(prototype|cjux|common_krx)\.js$/.test(url) ? false : true};
+    },
+    onBeforeRequestFilter = {
+        urls: ["*://*.krx.co.kr/*"],
+        types: ["sub_frame", "stylesheet", "image", "object"]
+    },
+    onBeforeRequestFilter2 = {
+        urls: ["*://*.krx.co.kr/*"],
+        types: ["script"]
+    },
+    onBeforeRequestOpt = ["blocking"];
+
+chrome.webRequest.onBeforeRequest.addListener(
+        onBeforeRequestCallback, onBeforeRequestFilter, onBeforeRequestOpt);
+chrome.webRequest.onBeforeRequest.addListener(
+        onBeforeRequestCallback2, onBeforeRequestFilter2, onBeforeRequestOpt);
