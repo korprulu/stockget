@@ -44,7 +44,7 @@ function Retrieve() {
                 clearInterval(intervalId);
                 if(!("_noclose" in window))
                     chrome.extension.sendMessage({type: "closetab"});
-            }, 3000, document, port);
+            }, 2000, document, port);
     });
 }
 

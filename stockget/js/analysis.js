@@ -12,6 +12,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+function _getPage(query) {
+    var seg = query.replace(/^\?/, "").split("&");
+    for (var i = 0, len = seg.length ; i < len ; i++) {
+        if (!seg[i]) { continue; }
+        if (seg[i].indexOf("cur_page") > -1) {
+            return seg[i].split("=")[1];
+        }
+    }
+    return null;
+}
+
 function Analysis() {
     var page_navi, active_page, last_page;
     page_navi = document.body.querySelector("div.page>table.page_navi");
@@ -22,20 +34,13 @@ function Analysis() {
 
     last_page = page_navi.querySelector("td.plast>a");
     if (last_page && "search" in last_page) {
-        last_page = function(query){
-            var seg = query.replace(/^\?/, "").split("&");
-            for (var i = 0, len = seg.length ; i < len ; i++) {
-                if (!seg[i]) { continue; }
-                if (seg[i].indexOf("cur_page") > -1) {
-                    return seg[i].split("=")[1];
-                }
-            }
-            return;
-        }(last_page.search.toString());
+        last_page = _getPage(last_page.search.toString());
     }
     else {
         // throw "Do not know last page!!";
-        last_page = 1;
+        var tmp = page_navi.querySelector("td.pprev>a");
+        last_page = _getPage(tmp.search.toString());
+        last_page !== null ? last_page = parseInt(last_page) + 1 : last_page = 1;
     }
 
     try {
